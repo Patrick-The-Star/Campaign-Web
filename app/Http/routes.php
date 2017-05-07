@@ -28,10 +28,19 @@ Route::group(['middleware' => ['web']], function () {
         return view('welcome');
     })->middleware('guest');
 
+
+
     Route::get('/tasks', 'TaskController@index');
     Route::post('/task', 'TaskController@store');
+
     Route::delete('/task/{task}', 'TaskController@destroy');
 
+    Route::get('/campaign_contents','ContentController@index');
+    Route::post('/campaign_content','ContentController@store');
+    Route::get('/campaign_contents/{campaign}','ContentController@getContent');
+    
+    Route::put('/ajaxCall','ContentController@ajaxCall');
+    Route::get('/ajaxCall','ContentController@ajaxCall');
     Route::auth();
 
 });

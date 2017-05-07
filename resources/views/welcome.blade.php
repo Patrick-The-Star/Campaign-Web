@@ -7,9 +7,17 @@
             <div class="panel panel-default">
                 <div class="panel-heading">Welcome</div>
 
-                <div class="panel-body">
-                    Your Application's Landing Page.
+                <img id="logo" src="images/inlatis.png">
+                <h1 id="logoTitle">Campaign web app</h1>
+                <br><br>
+                <div id="introduction">
+                    <p>
+                    Hello there. This website is under construction and this is an initial commit of the website.
+                    Any suggestions and criticisms are welcomed at saugat.awale@gmail.com
+                    </p>
                 </div>
+                
+
             </div>
         </div>
     </div>

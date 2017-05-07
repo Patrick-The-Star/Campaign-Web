@@ -1,11 +1,10 @@
 <?php
 
 namespace App\Repositories;
-use App\Campaign;
-use App\User;
-use App\Task;
+use App\Campaign_content;
 
-class TaskRepository
+
+class ContentRepository
 {
     /**
      * Get all of the tasks for a given user.
@@ -13,9 +12,9 @@ class TaskRepository
      * @param  User  $user
      * @return Collection
      */
-    public function forUser()
+    public function forContent()
     {
-        return Campaign::all();
+        return Campaign_content::all();
                     
     }
 }
