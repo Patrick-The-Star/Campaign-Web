@@ -40,7 +40,7 @@ Route::group(['middleware' => ['web']], function () {
     Route::get('/campaign_contents/{campaign}','ContentController@getContent');
     
     Route::put('/ajaxCall','ContentController@ajaxCall');
-    Route::get('/ajaxCall','ContentController@ajaxCall');
+    // Route::get('/ajaxCall','ContentController@ajaxCall');
     Route::auth();
 
 });

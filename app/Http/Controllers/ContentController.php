@@ -75,8 +75,8 @@ class ContentController extends Controller
         $array = array("val"=>$content);
         $json_str = json_encode($array);
         
-        
-        return redirect('/campaign_contents');
+        return $content->toJson();
+        // return redirect('/campaign_contents');
     }
 
     /**
@@ -117,13 +117,15 @@ class ContentController extends Controller
     }
 
     public function ajaxCall(Request $request){
-        $tempContent = Campaign_content::find($request->id);
-        
+        $tempContent = new Campaign_content;
+        $tempContent->campaign_id = $request->id;
         $tempContent->content_type = $request->content_type;
         $tempContent->content = $request->content;
         $tempContent->save();
+        // $tempContent->$tempContent->toJson();
+        return response()->json($tempContent);
         
-
-       return redirect('/campaign_contents');
+        // return redirect('/tasks');
+       
     }
 }

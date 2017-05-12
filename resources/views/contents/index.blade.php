@@ -1,7 +1,7 @@
 @extends('layouts.app')
 
 @section('content')
-    <div class="container">
+    <div ng-app="myApp" ng-controller="HttpController" class="container">
         <div class="col-sm-offset-2 col-sm-8">
 
 
@@ -162,13 +162,7 @@
                                 </div>
 
                                <!--submitContent --> 
-                               <div id="submitContent" class="form-group">
-                                    <div class="col-sm-offset-3 col-sm-6">
-                                        <button type="submit" class="btn btn-success">
-                                            <i class="fa fa-btn fa-save"></i>Submit Content
-                                        </button>
-                                    </div>
-                                </div>
+                               
 
                                 
 
@@ -176,6 +170,14 @@
 
                                 
                             </form>
+
+                            <div id="submitContent" class="form-group">
+                                    <div class="col-sm-offset-3 col-sm-6">
+                                        <button ng-click="putOrder()" class="btn btn-success">
+                                            <i class="fa fa-btn fa-save"></i>Submit Content
+                                        </button>
+                                    </div>
+                            </div>
 
                             <div id="cancelContent" class="form-group">
                                     <div class="col-sm-offset-3 col-sm-6">
@@ -277,7 +279,7 @@
                                                 
                                                     
 
-                                                    <button type="submit" class="btn btn-success update">
+                                                    <button ng-click="putOrder()" class="btn btn-success update">
                                                         <i class="fa fa-btn fa-save"></i>Update
                                                     </button>
                                                 

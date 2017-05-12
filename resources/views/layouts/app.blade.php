@@ -155,37 +155,18 @@
         </div>
     </nav>
 
-    @yield('content')
-
     <!-- JavaScripts -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
-
-    {{-- <script src="{{ elixir('js/app.js') }}"></script> --}}
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular.min.js"></script>
+    
     <script>
-        $(document).ready(function(){
-            $("#contentForm").hide();
-            $("#campaignForm").hide();
-            $(".update").click(function(){
-                var $item = $(this).closest("tr")
-                var str = $item[0].textContent;
+        
+        
+            $(document).ready(function(){
+                
 
-                str = str.replace(/  +/g, '$');
-                console.log(str);
-                arr = str.trim("$").split("$");
-                arr.shift();arr.pop();
-                console.log(arr);
-                $.ajax({type: "GET",url: "/ajaxCall",data:{id:arr[0],content_type:arr[1],content:arr[2]},dataType:"JSONP",success:function(result){
-
-                    console.log(result);
-                }});
-
-
-            }); 
-
-
-
-            $("#addContent").find("button").click(function(){
+                $("#addContent").find("button").click(function(){
                 $("#addCampaign").hide();
                 $("#contentForm").show();
                 $("#addContent").hide();
@@ -211,8 +192,19 @@
                 $("#addContent").show();
             });
 
-        });
+            });
+
+            
+
+            
+            
+        
     </script>
+    <script src="/../js/ng-app.js"></script>
+    {{-- <script src="{{ elixir('js/app.js') }}"></script> --}}
+    @yield('content')
+
+    
 
 </body>
 </html>
