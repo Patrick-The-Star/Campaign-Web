@@ -11,8 +11,14 @@ use App\Campaign;
 use App\Repositories\ContentRepository;
 use App\Repositories\TaskRepository;
 
+
+
+   
+
 class ContentController extends Controller
-{
+{   
+
+        
     /**
      * The task repository instance.
      *
@@ -95,30 +101,27 @@ class ContentController extends Controller
         return redirect('/tasks');
     }
 
-    public function getContent(Request $request,Campaign $campaign){
+    // public function getContent(Request $request,Campaign $campaign){
 
 
 
-        return view('contents.index',[
-                'contents' => $this->contents->forContent(),
-                'tContents'=>$this->contents->forContentTable($campaign),
-                'tasks'=>$this->tasks->forUser(),
-            ]);
+    //     return view('contents.index',[
+    //             'contents' => $this->contents->forContent(),
+    //             'tContents'=>$this->contents->forContentTable($campaign),
+    //             'tasks'=>$this->tasks->forUser(),
+    //         ]);
+    // }
+
+    public function getContentJson(Request $request, Campaign $campaign){
+        $contentJson =$this->contents->forContent();
+        return response()->json($contentJson);
     }
 
-    public function putContent(Request $request,$id,$campaign_id,$content_type,$content){
-        $tempContent = Campaign_content::find($id);
-        // $tempContent->id = $id;
-        $tempContent->campaign_id = $campaign_id;
-        $tempContent->content_type = $content_type;
-        $tempContent->content = $content;
-        $tempContent->save();
-        return response()->json(['response'=>'This is method']);
-    }
+    
 
-    public function ajaxCall(Request $request){
+    public function putContent(Request $request){
         $tempContent = new Campaign_content;
-        $tempContent->campaign_id = $request->id;
+        $tempContent->campaign_id = $request->campaign_id;
         $tempContent->content_type = $request->content_type;
         $tempContent->content = $request->content;
         $tempContent->save();
@@ -128,4 +131,6 @@ class ContentController extends Controller
         // return redirect('/tasks');
        
     }
+
+   
 }

@@ -9,22 +9,29 @@
 
 
             
-            var obj = {id:6,content_type:'please work',content:'dont hail angular'};
+            var obj = {id:8,content_type:'please work',content:'dont hail angular'};
             
             function httpController($scope,$http){
 
-                
-                 
-            	$("#contentForm").hide();
+                $("#contentForm").hide();
                 $("#campaignForm").hide(); 
-                function call(){
-                    console.log(obj);
-                    
+                
+                $scope.campaigns ={};
+                $scope.campaignContents = {};
+
+                $scope.getContentJson = function(){
+
+                    $http.get('/getContentJson').then(function(response){
+                        console.log(response);
+                    });
+
                 }
 
-                $scope.putOrder = function(){
-                    console.log("hello");
-                    $http.put('/ajaxCall',obj).then(function(response){
+                
+
+                $scope.putContent = function(){
+                    console.log($scope.content);
+                    $http.put('/putContent',$scope.content).then(function(response){
                     console.log(response);
                     });
                 }
@@ -44,7 +51,7 @@
                     // }});
                         
                         console.log("m here");
-                        call();
+                        
                     });
                     
 

@@ -29,7 +29,6 @@ Route::group(['middleware' => ['web']], function () {
     })->middleware('guest');
 
 
-
     Route::get('/tasks', 'TaskController@index');
     Route::post('/task', 'TaskController@store');
 
@@ -39,8 +38,10 @@ Route::group(['middleware' => ['web']], function () {
     Route::post('/campaign_content','ContentController@store');
     Route::get('/campaign_contents/{campaign}','ContentController@getContent');
     
-    Route::put('/ajaxCall','ContentController@ajaxCall');
-    // Route::get('/ajaxCall','ContentController@ajaxCall');
+    Route::put('/putContent','ContentController@putContent');
+    Route::get('/getContentJson','ContentController@getContentJson');
+    
+
     Route::auth();
 
 });

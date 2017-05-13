@@ -131,7 +131,7 @@
                                     <label for="content-campaign_id" class="col-sm-3 control-label">Campaign Id</label>
 
                                     <div class="col-sm-6">
-                                        <input type="text" name="campaign_id" id="campaign-campaign_id" class="form-control" value="{{ old('campaign_content') }}">
+                                        <input ng-model="content.campaign_id" type="text" name="campaign_id" id="campaign-campaign_id" class="form-control" value="{{ old('campaign_content') }}">
                                     </div>
                                 </div>
 
@@ -140,7 +140,7 @@
                                     <label for="content-content_type" class="col-sm-3 control-label">Content Type</label>
 
                                     <div class="col-sm-6">
-                                        <input type="text" list="content_types" name="content_type" id="content-content_type" class="form-control" value="{{ old('campaign_content') }}">
+                                        <input ng-model="content.content_type" type="text" list="content_types" name="content_type" id="content-content_type" class="form-control" value="{{ old('campaign_content') }}">
                                         <datalist id="content_types">
                                           <option>Body</option>
                                           <option>From_Name</option>
@@ -157,7 +157,7 @@
                                     <label for="content-content" class="col-sm-3 control-label">Content</label>
 
                                     <div class="col-sm-6">
-                                        <input type="text" name="content" id="content-content" class="form-control" value="{{ old('campaign_content') }}">
+                                        <input ng-model="content.content" type="text" name="content" id="content-content" class="form-control" value="{{ old('campaign_content') }}">
                                     </div>
                                 </div>
 
@@ -173,7 +173,7 @@
 
                             <div id="submitContent" class="form-group">
                                     <div class="col-sm-offset-3 col-sm-6">
-                                        <button ng-click="putOrder()" class="btn btn-success">
+                                        <button ng-click="putContent()" class="btn btn-success">
                                             <i class="fa fa-btn fa-save"></i>Submit Content
                                         </button>
                                     </div>
@@ -279,7 +279,7 @@
                                                 
                                                     
 
-                                                    <button ng-click="putOrder()" class="btn btn-success update">
+                                                    <button ng-click="putContent()" class="btn btn-success update">
                                                         <i class="fa fa-btn fa-save"></i>Update
                                                     </button>
                                                 
