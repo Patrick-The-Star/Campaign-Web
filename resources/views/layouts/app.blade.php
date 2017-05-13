@@ -74,8 +74,8 @@
             
         }
 
-        #cancelContent{
-            margin-left:-0.7em;
+        #submitContent{
+            margin:2em 0em 5.5em 0;
         }
 
         #addContent{
