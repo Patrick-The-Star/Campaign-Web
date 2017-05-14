@@ -39,7 +39,7 @@ Route::group(['middleware' => ['web']], function () {
     Route::get('/campaign_contents/{campaign}','ContentController@getContent');
     
     Route::put('/putContent','ContentController@putContent');
-    Route::get('/getContentJson','ContentController@getContentJson');
+    Route::get('/getContentJson/{campaign}','ContentController@getContentJson');
     
 
     Route::auth();

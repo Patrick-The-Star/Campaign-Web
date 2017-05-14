@@ -101,19 +101,19 @@ class ContentController extends Controller
         return redirect('/tasks');
     }
 
-    // public function getContent(Request $request,Campaign $campaign){
+    public function getContent(Request $request,Campaign $campaign){
 
 
 
-    //     return view('contents.index',[
-    //             'contents' => $this->contents->forContent(),
-    //             'tContents'=>$this->contents->forContentTable($campaign),
-    //             'tasks'=>$this->tasks->forUser(),
-    //         ]);
-    // }
+        return view('contents.index',[
+                'contents' => $this->contents->forContent(),
+                'tContents'=>$this->contents->forContentTable($campaign),
+                'tasks'=>$this->tasks->forUser(),
+            ]);
+    }
 
     public function getContentJson(Request $request, Campaign $campaign){
-        $contentJson =$this->contents->forContent();
+        $contentJson =$this->contents->forContentTable($campaign);
         return response()->json($contentJson);
     }
 

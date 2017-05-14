@@ -1,15 +1,18 @@
 (function (){
 	'use strict';
 
-	angular.module('myApp',[]);
+	angular.module('myApp',[],function($interpolateProvider){
+        $interpolateProvider.startSymbol('<%');
+        $interpolateProvider.endSymbol('%>');
+    });
 			angular.module('myApp')
             .controller('HttpController',httpController);
 
             httpController.$inject=['$scope','$http'];
 
 
+            var url = "http://ec2-52-58-134-229.eu-central-1.compute.amazonaws.com/campaignTemp/";
             
-            var obj = {id:8,content_type:'please work',content:'dont hail angular'};
             
             function httpController($scope,$http){
 
@@ -17,22 +20,31 @@
                 $("#campaignForm").hide(); 
                 
                 $scope.campaigns ={};
-                $scope.campaignContents = {};
 
-                $scope.getContentJson = function(){
+                $http.get('/getContentJson/1').then(function(response){
+                    console.log(response.data);
+                    $scope.contents = response.data;
+                });
 
-                    $http.get('/getContentJson').then(function(response){
-                        console.log(response);
+                $scope.getContentJson = function($campaignId){
+                    console.log($campaignId);
+                    $campaignId = $campaignId || '2';
+                    $http.get('/getContentJson/'+$campaignId).then(function(response){
+                        $scope.contents = response.data;
                     });
 
                 }
 
-                
+
 
                 $scope.putContent = function(){
-                    console.log($scope.content);
+                    
                     $http.put('/putContent',$scope.content).then(function(response){
-                    console.log(response);
+                        console.log(response.data);
+                        $scope.contents.push(response.data);
+                        $("#addCampaign").show();
+                        $("#contentForm").hide();
+                        $("#addContent").show();
                     });
                 }
                 
@@ -50,9 +62,9 @@
                     //     console.log(result);
                     // }});
                         
-                        console.log("m here");
+                    console.log("m here");
                         
-                    });
+                });
                     
 
 

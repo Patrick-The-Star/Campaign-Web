@@ -237,14 +237,13 @@
                                         
                                         <!-- Task View Button -->
                                         <td>
-                                            <form action="{{url('campaign_contents/' . $task->id)}}" method="GET">
-                                                {{ csrf_field() }}
+                                            
                                                
 
-                                                <button type="submit" id="get-contents-{{ $task->id }}" class="btn btn-primary">
+                                                <button type="submit" ng-click="getContentJson({{$task->id}})" id="get-contents-{{ $task->id }}" class="btn btn-primary">
                                                     <i class="fa fa-btn fa-eye"></i>View
                                                 </button>
-                                            </form>
+                                           
                                         </td>
                                     </tr>
                                 @endforeach
@@ -263,14 +262,14 @@
                                     </tr>
                                 </thead>
                                 <tbody>
-                                    @foreach ($tContents as $content)
+                                    
                                         
 
                                         
-                                        <tr>
-                                            <td class="table-text"><div>{{ $content->id }}</div></td>
-                                            <td class="table-text" contenteditable='true'><div>{{ $content->content_type }}</div></td>
-                                            <td class="table-text" contenteditable='true'><div>{{ $content->content }}</div></td>
+                                        <tr ng-repeat="content in contents">
+                                            <td class="table-text"><div><% content.campaign_id %></div></td>
+                                            <td class="table-text" contenteditable='true'><div><% content.content_type %></div></td>
+                                            <td class="table-text" contenteditable='true'><div><% content.content %></div></td>
                                             
                                             <!-- contentsDelete Button -->
 
@@ -279,13 +278,13 @@
                                                 
                                                     
 
-                                                    <button ng-click="putContent()" class="btn btn-success update">
+                                                    <button class="btn btn-success update">
                                                         <i class="fa fa-btn fa-save"></i>Update
                                                     </button>
                                                 
                                             </td>
                                         </tr>
-                                    @endforeach
+                                    
                                 </tbody>
                             </table>
                         @endif

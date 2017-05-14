@@ -50,7 +50,7 @@
         .campaign-table{
             width:20%;
             float:left;
-            margin-right: 8em;
+            margin-right: 4em;
         }
 
         .campaign-panel{
@@ -163,10 +163,10 @@
     <script>
         
         
-            $(document).ready(function(){
+        $(document).ready(function(){
                 
 
-                $("#addContent").find("button").click(function(){
+            $("#addContent").find("button").click(function(){
                 $("#addCampaign").hide();
                 $("#contentForm").show();
                 $("#addContent").hide();
@@ -192,7 +192,7 @@
                 $("#addContent").show();
             });
 
-            });
+        });
 
             
 
