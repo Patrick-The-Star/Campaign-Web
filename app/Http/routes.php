@@ -29,6 +29,7 @@ Route::group(['middleware' => ['web']], function () {
     })->middleware('guest');
 
 
+    Route::get('/campaigns','TaskController@getCampaigns');
     Route::get('/tasks', 'TaskController@index');
     Route::post('/task', 'TaskController@store');
 

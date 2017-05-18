@@ -117,31 +117,29 @@
                                 </tr>
                             </thead>
                             <tbody>
-                                @foreach ($tasks as $task)
+                                
                                     
 
                                     
-                                    <tr>
-                                        <td class="table-text"><div>{{ $task->id }}</div></td>
-                                        <td class="table-text"><div>{{ $task->country }}</div></td>
-                                        <td class="table-text"><div>{{ $task->starts_at }}</div></td>
-                                        <td class="table-text"><div>{{ $task->ends_at }}</div></td>
-                                        <td class="table-text"><div>{{ $task->category }}</div></td>
-                                        <td class="table-text"><div>{{ $task->name }}</div></td>
-                                        <td class="table-text"><div>{{ $task->description }}</div></td>
+                                    <tr ng-repeat="campaign in campaigns">
+                                        <td class="table-text"><div><% campaign.id %></div></td>
+                                        <td class="table-text"><div><% campaign.country %></div></td>
+                                        <td class="table-text"><div><% campaign.starts_at %></div></td>
+                                        <td class="table-text"><div><% campaign.ends_at %></div></td>
+                                        <td class="table-text"><div><% campaign.category %></div></td>
+                                        <td class="table-text"><div><% campaign.name %></div></td>
+                                        <td class="table-text"><div><% campaign.description %></div></td>
                                         <!-- Task Delete Button -->
                                         <td>
-                                            <form action="{{ url('deleteTask/'.$task->id) }}" method="POST">
-                                            {{ csrf_field() }}
-                                            {{ method_field('DELETE') }}
+                                            
 
-                                                <button type="submit" id="delete-task-{{ $task->id }}" class="btn btn-danger">
+                                                <button ng-click="deleteTask(campaign.id,$index)" class="btn btn-danger">
                                                     <i class="fa fa-btn fa-trash"></i>Delete
                                                 </button>
-                                            </form>
+                                           
                                         </td>
                                     </tr>
-                                @endforeach
+                                
                             </tbody>
                         </table>
                     </div>

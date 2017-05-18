@@ -73,7 +73,7 @@ class TaskController extends Controller
         $campaign->description = $request->description; 
         $campaign->save();
 
-         return redirect('/campaign_contents');
+        return redirect('/campaign_contents');
     }
 
     /**
@@ -92,7 +92,12 @@ class TaskController extends Controller
         
         
 
-        return redirect('/tasks');
+        return $tempCampaign;
         
+    }
+
+    public function getCampaigns(Request $request){
+        $tempCampaign = $this->tasks->forUser();
+        return $tempCampaign;
     }
 }

@@ -19,17 +19,18 @@
                 $("#contentForm").hide();
                 $("#campaignForm").hide(); 
                 
-                $scope.campaigns ={};
                 
-                $http.get('/getContentJson/2').then(function(response){
-                    console.log(response.data);
-                    $scope.contents = response.data;
+                
+                $http.get('/campaigns').then(function(response){
+                    $scope.campaigns = response.data;
                 });
+                
 
-                $scope.deleteTask = function(){
+                $scope.deleteTask = function($campaign,$idx){
 
-                    $http.delete('/deleteTask/5').then(function(response){
-                        console.log(response);
+                    $http.delete('/deleteTask/'+$campaign).then(function(response){
+                        
+                        $scope.campaigns.splice($idx,1);
                     });
                 }
 
@@ -76,17 +77,7 @@
                     });
                 }
                 
-                $(".update").click(function(){
-                    
-                    
-                    // $.ajax({type: "GET",url: "/ajaxCall",data:{id:arr[0],content_type:arr[1],content:arr[2]},dataType:"text/html",contentType:"json",success:function(result){
-                        
-                    //     console.log(result);
-                    // }});
-                        
-                    console.log("m here");
-                        
-                });
+                
                     
 
 
