@@ -9,6 +9,8 @@ use App\Http\Controllers\Controller;
 use App\Campaign;
 use App\Task;
 use App\Repositories\TaskRepository;
+use App\Campaign_content;
+use App\Repositories\ContentRepository;
 
 class TaskController extends Controller
 {
@@ -25,10 +27,10 @@ class TaskController extends Controller
      * @param  TaskRepository  $tasks
      * @return void
      */
-    public function __construct(TaskRepository $tasks)
+    public function __construct(ContentRepository $contents,TaskRepository $tasks)
     {
         $this->middleware('auth');
-
+        $this->contents = $contents;
         $this->tasks = $tasks;
     }
 
@@ -81,12 +83,16 @@ class TaskController extends Controller
      * @param  Task  $task
      * @return Response
      */
-    public function destroy(Request $request, Task $task)
+    public function destroy(Request $request,$campaign)
     {
-        $this->authorize('destroy', $task);
 
-        $task->delete();
+        $tempCampaign = Campaign::find($campaign);
+        $tempCampaign->delete();
+        $deletedContents = Campaign_content::where('campaign_id', $campaign)->delete();
+        
+        
 
         return redirect('/tasks');
+        
     }
 }

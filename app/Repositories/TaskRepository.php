@@ -18,4 +18,8 @@ class TaskRepository
         return Campaign::all();
                     
     }
+
+    public function getCampaign($campaign){
+        return Campaign::where('id',$campaign)->get();
+    }
 }

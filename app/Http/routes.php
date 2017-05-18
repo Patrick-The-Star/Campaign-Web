@@ -32,7 +32,7 @@ Route::group(['middleware' => ['web']], function () {
     Route::get('/tasks', 'TaskController@index');
     Route::post('/task', 'TaskController@store');
 
-    Route::delete('/task/{task}', 'TaskController@destroy');
+    Route::delete('/deleteTask/{task}', 'TaskController@destroy');
 
     Route::get('/campaign_contents','ContentController@index');
     Route::post('/campaign_content','ContentController@store');
@@ -40,7 +40,7 @@ Route::group(['middleware' => ['web']], function () {
     
     Route::put('/putContent','ContentController@putContent');
     Route::get('/getContentJson/{campaign}','ContentController@getContentJson');
-    
+    Route::post('/postContent','ContentController@postContent');
 
     Route::auth();
 

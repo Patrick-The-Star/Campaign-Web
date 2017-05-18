@@ -1,7 +1,7 @@
 @extends('layouts.app')
 
 @section('content')
-    <div class="container">
+    <div ng-app="myApp" ng-controller="HttpController" class="container">
         <div class="col-sm-offset-2 col-sm-8">
             <div class="panel panel-default">
                 <div class="panel-heading">
@@ -131,9 +131,9 @@
                                         <td class="table-text"><div>{{ $task->description }}</div></td>
                                         <!-- Task Delete Button -->
                                         <td>
-                                            <form action="{{url('task/' . $task->id)}}" method="POST">
-                                                {{ csrf_field() }}
-                                                {{ method_field('DELETE') }}
+                                            <form action="{{ url('deleteTask/'.$task->id) }}" method="POST">
+                                            {{ csrf_field() }}
+                                            {{ method_field('DELETE') }}
 
                                                 <button type="submit" id="delete-task-{{ $task->id }}" class="btn btn-danger">
                                                     <i class="fa fa-btn fa-trash"></i>Delete

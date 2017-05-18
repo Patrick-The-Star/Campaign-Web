@@ -251,7 +251,9 @@
                         </table>
 
                         <!-- Current contents -->
-                        @if (count($tContents) > 0)
+
+                        
+
                             <table class="table table-striped contentstable content-table">
                                 <thead>
                                     
@@ -267,7 +269,7 @@
 
                                         
                                         <tr ng-repeat="content in contents">
-                                            <td class="table-text"><div><% content.campaign_id %></div></td>
+                                            <td class="table-text"><div><% content.id %></div></td>
                                             <td class="table-text" contenteditable='true'><div><% content.content_type %></div></td>
                                             <td class="table-text" contenteditable='true'><div><% content.content %></div></td>
                                             
@@ -278,7 +280,7 @@
                                                 
                                                     
 
-                                                    <button class="btn btn-success update">
+                                                    <button ng-click="postContent(content.content_type)" class="btn btn-success update">
                                                         <i class="fa fa-btn fa-save"></i>Update
                                                     </button>
                                                 
@@ -287,7 +289,7 @@
                                     
                                 </tbody>
                             </table>
-                        @endif
+                        
                     </div>
                 </div>
             @endif

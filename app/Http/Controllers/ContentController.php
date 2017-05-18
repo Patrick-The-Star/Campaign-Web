@@ -112,6 +112,8 @@ class ContentController extends Controller
             ]);
     }
 
+
+
     public function getContentJson(Request $request, Campaign $campaign){
         $contentJson =$this->contents->forContentTable($campaign);
         return response()->json($contentJson);
@@ -130,6 +132,15 @@ class ContentController extends Controller
         
         // return redirect('/tasks');
        
+    }
+
+    public function postContent(Request $request){
+        $tempContent = $this->contents->forContentTable($request->id);
+        $tempContent->content_type = $request->content_type;
+        $tempContent->content = $request->content;
+        $tempContent->save();
+
+        return response()->json($tempContent);
     }
 
    
