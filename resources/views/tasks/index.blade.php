@@ -13,7 +13,7 @@
                     @include('common.errors')
 
                     <!-- New Task Form -->
-                    <form action="{{ url('task') }}" method="POST" class="form-horizontal">
+                    <form action="{{ url('task') }}" method="POST" class="form-horizontal confirm">
                         {{ csrf_field() }}
 
                         <!-- Country Name -->
@@ -96,7 +96,7 @@
             
 
             <!-- Current Tasks -->
-            @if (count($tasks) > 0)
+            
                 <div class="panel panel-default">
                     <div class="panel-heading">
                         Current Campaigns
@@ -132,11 +132,11 @@
                                         <!-- Task Delete Button -->
                                         <td>
                                             
-
-                                                <button ng-click="deleteTask(campaign.id,$index)" class="btn btn-danger">
+                                            
+                                                <button ng-click="deleteTask(campaign.id,$index)" class="btn btn-danger confirm">
                                                     <i class="fa fa-btn fa-trash"></i>Delete
                                                 </button>
-                                           
+                                            
                                         </td>
                                     </tr>
                                 
@@ -144,7 +144,7 @@
                         </table>
                     </div>
                 </div>
-            @endif
+            
         </div>
     </div>
 @endsection

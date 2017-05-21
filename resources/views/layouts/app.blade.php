@@ -192,6 +192,11 @@
                 $("#addContent").show();
             });
 
+
+
+            
+            
+
         });
 
             
@@ -201,6 +206,7 @@
         
     </script>
     <script src="/../js/ng-app.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/angular-ui-bootstrap/2.5.0/ui-bootstrap.min.js"></script>
     {{-- <script src="{{ elixir('js/app.js') }}"></script> --}}
     @yield('content')
 

@@ -181,7 +181,7 @@
 
                             <div id="cancelContent" class="form-group">
                                     <div class="col-sm-offset-3 col-sm-6">
-                                        <button class="btn btn-danger">
+                                        <button id="cancelButton" class="btn btn-danger">
                                             <i class="fa fa-btn fa-trash"></i>Cancel Content
                                         </button>
                                     </div>
@@ -207,7 +207,7 @@
                             <!-- Add Content Button -->
                             <div id="addContent" class="form-group">
                                 <div class="col-sm-offset-3 col-sm-6">
-                                    <button type="submit" class="btn btn-default">
+                                    <button id="contentButton" type="submit" class="btn btn-default">
                                         <i class="fa fa-btn fa-plus"></i>Add Content
                                     </button>
                                 </div>

@@ -1,38 +1,48 @@
 (function (){
 	'use strict';
 
-	angular.module('myApp',[],function($interpolateProvider){
+	angular.module('myApp',['ui.bootstrap'],function($interpolateProvider){
         $interpolateProvider.startSymbol('<%');
         $interpolateProvider.endSymbol('%>');
     });
 			angular.module('myApp')
             .controller('HttpController',httpController);
 
-            httpController.$inject=['$scope','$http'];
+            httpController.$inject=['$scope','$http','$window'];
 
 
-            var url = "http://ec2-52-58-134-229.eu-central-1.compute.amazonaws.com/campaignTemp/";
+            var url = "http://ec2-52-58-134-229.eu-central-1.compute.amazonaws.com/campaignTemp/public";
             
             
-            function httpController($scope,$http){
+            function httpController($scope,$http,$window){
 
                 $("#contentForm").hide();
                 $("#campaignForm").hide(); 
                 
                 
-                
+               
                 $http.get('/campaigns').then(function(response){
                     $scope.campaigns = response.data;
-                });
+                })
                 
 
                 $scope.deleteTask = function($campaign,$idx){
 
-                    $http.delete('/deleteTask/'+$campaign).then(function(response){
+                    var deleteCampaign = $window.confirm('Are you sure you want to delete the campaign along with its related contents?');
+                    
+                    if(deleteCampaign){
+                        $http.delete('/deleteTask/'+$campaign).then(function(response){
                         
-                        $scope.campaigns.splice($idx,1);
-                    });
-                }
+
+                            $scope.campaigns.splice($idx,1);
+
+                        });
+                    }
+
+                };
+
+                    
+                
 
                 $scope.getContentJson = function($campaignId){
                     
@@ -83,7 +93,7 @@
 
                 
 
-
+               
 
                 
             }
