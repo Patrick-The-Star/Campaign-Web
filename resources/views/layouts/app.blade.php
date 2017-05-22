@@ -20,9 +20,17 @@
             font-family: 'Lato';
         }
 
-        .clear {
-            clear:both;
-            line-height:0;
+        #updateAlert{
+            margin:-6em 0 0em 32em;
+            float:left;
+            width:25%;
+            
+        }
+
+        #deleteAlert{
+            float:right;
+            margin:-5em 15em 0 0;
+            width:35%;
         }
 
         #logoTitle{
@@ -68,9 +76,9 @@
         #contentForm{
             height:25em;
             width:60%;
-            margin:auto;
+            margin:0 auto 0 auto;
             position:absolute;
-            top:0;left:0;bottom:0;right:0;
+            top:1em;left:0;bottom:0;right:0;
             
         }
 
@@ -88,9 +96,9 @@
         #campaignForm{
             height:32em;
             width:60%;
-            margin:auto;
+            margin:0 auto 0 auto;
             position:absolute;
-            top:3em;left:0;bottom:0;right:0;
+            top:1em;left:0;bottom:0;right:0;
             
         }
 
@@ -164,6 +172,8 @@
         
         
         $(document).ready(function(){
+
+
                 
 
             $("#addContent").find("button").click(function(){
@@ -192,11 +202,11 @@
                 $("#addContent").show();
             });
 
+            
+
 
 
             
-            
-
         });
 
             

@@ -135,13 +135,16 @@ class ContentController extends Controller
     }
 
     public function postContent(Request $request){
-        $tempContent = $this->contents->forContentTable($request->id);
+        $tempContent = Campaign_content::find($request->id);
         $tempContent->content_type = $request->content_type;
         $tempContent->content = $request->content;
         $tempContent->save();
 
-        return response()->json($tempContent);
+        return $tempContent;
+        
     }
+
+    
 
    
 }

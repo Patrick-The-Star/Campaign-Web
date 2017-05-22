@@ -17,9 +17,11 @@
                     </div>
 
                     <div id="campaignForm" class="panel panel-default">
+
                         <div class="panel-heading">
                             New Campaign
                         </div>
+                        
                         <!--Campaign Form-->
                         <div class="panel-body">
                         <!-- Display Validation Errors -->
@@ -201,7 +203,20 @@
                                 </tr>
                             </thead>
 
-                            
+                            <!--Add Campaign Button-->
+                            <div id="addCampaign" class="form-group">
+                                <div class="col-sm-offset-3 col-sm-6">
+                                    <button type="submit" class="btn btn-default">
+                                        <i class="fa fa-btn fa-plus"></i>Add Campaign
+                                    </button>
+                                </div>
+                            </div>
+
+                            <div id="updateAlert" class="alert alert-success alert-dismissable fade in">
+                                
+                                <strong>Success!</strong> Content has been successfully updated.
+                            </div>
+
 
 
                             <!-- Add Content Button -->
@@ -213,14 +228,9 @@
                                 </div>
                             </div>
 
-                            <!--Add Campaign Button-->
-                            <div id="addCampaign" class="form-group">
-                                <div class="col-sm-offset-3 col-sm-6">
-                                    <button type="submit" class="btn btn-default">
-                                        <i class="fa fa-btn fa-plus"></i>Add Campaign
-                                    </button>
-                                </div>
-                            </div>
+                            
+
+                            
                             
 
                             <tbody>
@@ -263,12 +273,12 @@
                                         <th>Content</th>
                                     </tr>
                                 </thead>
-                                <tbody>
+                                <tbody id="updateTable">
                                     
                                         
 
                                         
-                                        <tr ng-repeat="content in contents">
+                                        <tr ng-repeat="content in contents track by $index">
                                             <td class="table-text"><div><% content.id %></div></td>
                                             <td class="table-text" contenteditable='true'><div><% content.content_type %></div></td>
                                             <td class="table-text" contenteditable='true'><div><% content.content %></div></td>
@@ -280,12 +290,18 @@
                                                 
                                                     
 
-                                                    <button ng-click="postContent(content.content_type)" class="btn btn-success update">
+                                                    <button ng-click="updateContent($index)" class="update btn btn-success">
                                                         <i class="fa fa-btn fa-save"></i>Update
                                                     </button>
                                                 
                                             </td>
+
+                                            
+
+
                                         </tr>
+
+                                        
                                     
                                 </tbody>
                             </table>

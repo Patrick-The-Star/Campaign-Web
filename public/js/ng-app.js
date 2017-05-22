@@ -18,12 +18,18 @@
 
                 $("#contentForm").hide();
                 $("#campaignForm").hide(); 
-                
-                
+                $("#warning").show();
+                $("#updateAlert").hide();
+                $("#deleteAlert").hide(); 
                
                 $http.get('/campaigns').then(function(response){
                     $scope.campaigns = response.data;
-                })
+                });
+
+                
+                    
+                    $scope.contents = [];
+                
                 
 
                 $scope.deleteTask = function($campaign,$idx){
@@ -35,6 +41,8 @@
                         
 
                             $scope.campaigns.splice($idx,1);
+                            $("#deleteAlert").show();
+                            $("#deleteAlert").fadeOut(5000);
 
                         });
                     }
@@ -49,7 +57,7 @@
                     $campaignId = $campaignId || '1';
 
                     $http.get('/getContentJson/'+$campaignId).then(function(response){
-                        console.log(response);
+                        
                         $scope.contents = response.data;
                     });
 
@@ -65,6 +73,8 @@
                         $("#addCampaign").show();
                         $("#contentForm").hide();
                         $("#addContent").show();
+
+                        
                     });
                 }
 
@@ -85,6 +95,29 @@
                             }
                         }
                     });
+                }
+
+                $scope.updateContent = function($idx){
+
+                    
+                        console.log($idx);
+                        var $item = $("#updateTable tr").eq($idx);
+                        
+                        var str = $item[0].textContent;
+                        str = str.replace(/  +/g, '$');
+                        
+                        var arr = str.trim("$").split("$");
+                        arr.shift();arr.pop();
+                        console.log(arr);
+                        var $updateItem = {id:arr[0],content_type:arr[1],content:arr[2]};
+                        $http.post('/postContent',$updateItem).then(function(response){
+                            console.log(response);
+                            $scope.contents[$idx] = response.data;
+                            $("#updateAlert").show();
+                            $("#updateAlert").fadeOut(5000);
+
+                        });
+                    
                 }
                 
                 

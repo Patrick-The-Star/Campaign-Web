@@ -29,4 +29,8 @@ class ContentRepository
     public function getOne($a){
         return Campaign_content::where('campaign_id',$a)->get();
     }
+
+    public function getContentById($id){
+        return Campaign_content::where('id',$id)->get();
+    }
 }

@@ -106,7 +106,12 @@
                         <table class="table table-striped task-table">
                             <thead>
                                 <h1>Campaigns</h1>
-                                <tr>
+
+                                <div id="deleteAlert" class="alert alert-danger alert-dismissable fade in">
+    
+                                    <strong>Warning!</strong> The data and its relational contents have been deleted.
+                                </div>
+                                  <tr>
                                     <th>Id</th>
                                     <th>Country</th>
                                     <th>Starts_at</th>
